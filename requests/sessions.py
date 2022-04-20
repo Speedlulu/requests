@@ -694,6 +694,10 @@ class Session(SessionRedirectMixin):
 
         :rtype: dict
         """
+
+        # Merge verify before checking env variables
+        verify = merge_setting(verify, self.verify)
+
         # Gather clues from the surrounding environment.
         if self.trust_env:
             # Set environment's proxies.
